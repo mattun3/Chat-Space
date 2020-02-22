@@ -3,6 +3,7 @@
 }
 .wrapper {
 	display: flex;
+
 	.side-bar {
 		height: 100vh;
 		width: 300px;
@@ -63,8 +64,28 @@
 			border-bottom: 1px solid #eeeeee;
 			padding: 0 40px;
 			display: flex;
+			justify-content: space-between;
+			&__box {
+				
+				&__group-name {
+					font-size: 16px bold #333333;
+					margin: 35px 0 15px;
+				}
+				&__member {
+					font-size: 12px bold #999999;
+				}
+			}
+			&__edit-btn {
 			
-			
+				button {
+					font-size: 16px;
+					margin: 28px 20px;
+					width: 72px;
+					height: 40px;
+					border: solid 1px #38aef0;
+					color: #38aef0;
+				}
+			}
 		}
 		&__message-list {
 			background-color: #fafafa;

@@ -2,10 +2,13 @@
   .chat-main__group-info
     .chat-main__group-info__box
       .chat-main__group-info__box__group-name
-        ="ggg"
+        = @group.name
       .chat-main__group-info__box__member
+        = "Member:"
+        - @group.group_users.each do |user_name|
+          = user_name.user.name
     .chat-main__group-info__edit-btn
-      = link_to "#" do
+      = link_to edit_group_path(@group) do
         %button edit
   .chat-main__messages-list
     .chat-main__messages-list__info
@@ -22,11 +25,14 @@
         = "11"
     .chat-main__messages-list__message
       = "foo"
+  .messages
+    = render @messages
   .chat-main__messages-form
     %form.new__message
-      .chat-main__messages-form__box
-        %input{type: "text", class: "chat-main__messages-form__box__text", placeholder: "type a message"}
-        %label{class: "chat-main__messages-form__box__image"}
-          %i.far.fa-images
-          %input{type: "file", class: "chat-main__messages-form__box__image__file"}
-      %input{type: "submit", class: "submit-btn"}
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .chat-main__messages-form__box
+          = f.label :image, class: 'form__mask__image' do
+            = icon('fas', 'image', class: 'icon')
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'

@@ -18,7 +18,8 @@ $(function(){
         <img src="${message.image}" class="lower-message__image">
       </div>
     </div>
-    `;
+    `
+    return html;
     } else if (message.content) {
       var html = `
       <div class="message" data-message-id= '${message.id}'>
@@ -36,7 +37,8 @@ $(function(){
           </p>
         </div>
       </div>
-      `;
+      `
+      return html;
     } else if (message.image) {
       var html = `
       <div class="message" data-message-id='${message.id}'>
@@ -52,9 +54,9 @@ $(function(){
           <img src="${message.image}" class="lower-message__image">
         </div>
       </div>
-      `;
+      `
+      return html;
     };
-    return html;
   };
 $('#new_message').on('submit', function(e){
   e.preventDefault();
